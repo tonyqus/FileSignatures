@@ -12,7 +12,7 @@ namespace FileSignatures.Formats
     /// in particular 2.2 for a description of the CFB header specification.
     /// </remarks>
     public abstract class CompoundFileBinary : FileFormat, IFileFormatReader
-    { 
+    {
         /// <summary>
         /// Initializes a new instance of the CompoundFileBinary class.
         /// </summary>
@@ -40,9 +40,9 @@ namespace FileSignatures.Formats
 
         public bool IsMatch(IDisposable? file)
         {
-            if(file is CompoundFile cf)
+            if (file is RootStorage root)
             {
-                return cf.RootStorage.TryGetStream(Storage, out CFStream _);
+                return root.TryOpenStream(Storage, out CfbStream? _);
             }
             else
             {
@@ -54,9 +54,10 @@ namespace FileSignatures.Formats
         {
             try
             {
-                return new CompoundFile(stream, CFSUpdateMode.ReadOnly, CFSConfiguration.LeaveOpen);
+                return RootStorage.Open(stream, StorageModeFlags.LeaveOpen);
             }
-            catch(EndOfStreamException)
+            //catch(EndOfStreamException)
+            catch (ObjectDisposedException)
             {
                 return null;
             }
