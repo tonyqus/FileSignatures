@@ -28,6 +28,7 @@ namespace FileSignatures.Tests
         [InlineData("test.pptm", "application/vnd.ms-powerpoint.presentation.macroEnabled.12")]
         [InlineData("test.spiff", "image/jpeg")]
         [InlineData("test.tif", "image/tiff")]
+        [InlineData("bigendian.tif", "image/tiff")]
         [InlineData("test.xls", "application/vnd.ms-excel")]
         [InlineData("test.xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")]
         [InlineData("test.xlsm", "application/vnd.ms-excel.sheet.macroEnabled.12")]

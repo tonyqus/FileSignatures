@@ -93,8 +93,8 @@ namespace FileSignatures
             // Static registry of all built-in file formats
             // This replaces reflection-based discovery for AOT compatibility
             // Only includes concrete (non-abstract) classes with parameterless constructors
-            return new FileFormat[]
-            {
+            return
+            [
                 new AdobePdf(),
                 new Amr(),
                 new Bmp(),
@@ -139,6 +139,7 @@ namespace FileSignatures
                 new Tar(),
                 new ThreeGpp(),
                 new Tiff(),
+                new BigEndianTiff(),
                 new Vcard(),
                 new Visio(),
                 new VisioLegacy(),
@@ -150,7 +151,7 @@ namespace FileSignatures
                 new WordTemplate(),
                 new Xps(),
                 new Zip()
-            };
+            ];
         }
     }
 }
