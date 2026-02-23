@@ -58,6 +58,7 @@ namespace FileSignatures.Tests
 
             using var ms = new MemoryStream(header);
             var result = format.IsMatch(ms);
+
             Assert.True(result);
         }
 
