@@ -1,34 +1,41 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <Description>A small library for detecting the type of a file based on header signature (also known as magic number) rather than file extension.</Description>
-    <Authors>Neil Harvey</Authors>
-    <TargetFrameworks>netstandard2.0;netstandard2.1;net8.0;net9.0</TargetFrameworks>
-    <AssemblyName>FileSignatures</AssemblyName>
-    <PackageId>FileSignatures</PackageId>
-    <PackageTags>File Format;Mime Type;Media Type;Header;Signature;Detection</PackageTags>
-    <PackageReleaseNotes>https://github.com/neilharvey/FileSignatures/releases</PackageReleaseNotes>
-    <PackageProjectUrl>https://github.com/neilharvey/FileSignatures/</PackageProjectUrl>
-    <PackageLicenseUrl></PackageLicenseUrl>
-    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
-    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
-    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
-    <Version>6.1.1</Version>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <AssemblyVersion>6.1.1</AssemblyVersion>
-    <LangVersion>Latest</LangVersion>
-    <Nullable>enable</Nullable>
-    <FileVersion>6.1.1</FileVersion>
-    <SignAssembly>True</SignAssembly>
-    <AssemblyOriginatorKeyFile>..\..\FileSignatures.snk</AssemblyOriginatorKeyFile>
-    <IsAotCompatible Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net7.0'))">true</IsAotCompatible>
-  </PropertyGroup>
+	<PropertyGroup>
+		<Description>A small library for detecting the type of a file based on header signature (also known as magic number) rather than file extension.</Description>
+		<Authors>Neil Harvey</Authors>
+		<TargetFrameworks>netstandard2.0;netstandard2.1;net8.0;net9.0;net10.0</TargetFrameworks>
+		<AssemblyName>FileSignatures</AssemblyName>
+		<PackageId>FileSignatures</PackageId>
+		<PackageTags>File Format;Mime Type;Media Type;Header;Signature;Detection</PackageTags>
+		<PackageReleaseNotes>https://github.com/neilharvey/FileSignatures/releases</PackageReleaseNotes>
+		<PackageProjectUrl>https://github.com/neilharvey/FileSignatures/</PackageProjectUrl>
+		<PackageLicenseUrl></PackageLicenseUrl>
+		<GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+		<GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+		<GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+		<Version>7.0.0</Version>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<AssemblyVersion>7.0.0</AssemblyVersion>
+		<LangVersion>Latest</LangVersion>
+		<Nullable>enable</Nullable>
+		<FileVersion>7.0.0</FileVersion>
+		<IsAotCompatible Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net7.0'))">true</IsAotCompatible>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="System.Reflection.TypeExtensions" Version="4.3.0" />
-    <PackageReference Include="System.Runtime" Version="4.3.0" />
-    <PackageReference Include="OpenMcdf" Version="3.1.0" />
-  </ItemGroup>
+	<ItemGroup>
+		<None Include="..\..\README.md" Pack="true" PackagePath="\"/>
+	</ItemGroup>
+
+	<PropertyGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+		<SignAssembly>True</SignAssembly>
+		<AssemblyOriginatorKeyFile>..\..\FileSignatures.snk</AssemblyOriginatorKeyFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="System.Reflection.TypeExtensions" Version="4.3.0" />
+		<PackageReference Include="OpenMcdf" Version="3.1.0" />
+	</ItemGroup>
 
 </Project>
